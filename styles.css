@@ -1,0 +1,167 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: #f7f7f7;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, #ff0000, #ff0000);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: black;
+}
+
+/* Productos */
+#productos {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+#productos h2 {
+  margin-bottom: 25px;
+  color: #ff0000;
+}
+
+.productos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 220px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.precio {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000000;
+  margin: 10px 0;
+}
+
+.card button {
+  background: #ff0000;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card button:hover {
+  background: #d63c00;
+}
+
+/* Registro */
+#registro {
+  background: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+#registro h2 {
+  margin-bottom: 20px;
+  color: #ff0000;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  margin: auto;
+}
+
+form input, form button {
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+form button {
+  background: #ff0000;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: #b80000;
+}
+
+#mensaje {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #222;
+  color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .productos-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

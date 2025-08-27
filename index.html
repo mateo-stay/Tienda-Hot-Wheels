@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hot Wheels Store</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Hot Wheels Store</h1>
+    <nav>
+      <ul>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#registro">Registro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Sección productos -->
+    <section id="productos">
+      <h2>Nuestros Modelos Exclusivos</h2>
+      <div class="productos-container">
+        
+        <div class="card">
+          <img src="img/skyline.jpg" alt="Hot Wheels Skyline">
+          <h3>Nissan Skyline R32</h3>
+          <p class="precio">$6.000</p>
+          <button>Añadir al carrito</button>
+        </div>
+
+        <div class="card">
+          <img src="img/toyota.jpg" alt="Hot Wheels Supra">
+          <h3>Toyota Supra Mk4</h3>
+          <p class="precio">$7.000</p>
+          <button>Añadir al carrito</button>
+        </div>
+
+        <div class="card">
+          <img src="img/subaru.jpg" alt="Hot Wheels Impreza">
+          <h3>Subaru Impreza STI</h3>
+          <p class="precio">$7.000</p>
+          <button>Añadir al carrito</button>
+        </div>
+
+        <div class="card">
+          <img src="img/subaru_brz.jpg" alt="Hot Wheels Brz">
+          <h3>Subaru BRZ</h3>
+          <p class="precio">$5.000</p>
+          <button>Añadir al carrito</button>
+        </div>
+
+        <div class="card">
+          <img src="img/porche.jpg" alt="Hot Wheels Porsche">
+          <h3>Porsche 911 GT3</h3>
+          <p class="precio">$4.000</p>
+          <button>Añadir al carrito</button>
+        </div>
+
+        <div class="card">
+          <img src="img/mazda_787b.jpg" alt="Hot Wheels Mazda 787B">
+          <h3>Mazda 787B</h3>
+          <p class="precio">$7.000</p>
+          <button>Añadir al carrito</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sección registro -->
+    <section id="registro">
+      <h2>Registro de Usuarios</h2>
+      <form id="formRegistro">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+
+        <label for="email">Correo:</label>
+        <input type="email" id="email" required>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" required minlength="6">
+
+        <button type="submit">Registrarme</button>
+      </form>
+      <p id="mensaje"></p>
+    </section>
+
+    <!-- Catálogo (vacío por ahora) -->
+    <section id="catalogo">
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Hot Wheels Store - Proyecto DuocUC</p>
+  </footer>
+</body>
+</html>
