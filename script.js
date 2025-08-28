@@ -7,25 +7,24 @@ document.getElementById("formRegistro").addEventListener("submit", function(e) {
   const mensaje = document.getElementById("mensaje");
 
   if (nombre === "" || email === "" || password === "") {
-    mensaje.textContent = "⚠️ Todos los campos son obligatorios.";
+    mensaje.textContent = "Todos los campos son obligatorios.";
     mensaje.style.color = "red";
     return;
   }
 
   if (!email.includes("@")) {
-    mensaje.textContent = "⚠️ Ingresa un correo válido.";
+    mensaje.textContent = "Ingresa un correo válido.";
     mensaje.style.color = "red";
     return;
   }
 
   if (password.length < 6) {
-    mensaje.textContent = "⚠️ La contraseña debe tener al menos 6 caracteres.";
+    mensaje.textContent = "La contraseña debe tener al menos 6 caracteres.";
     mensaje.style.color = "red";
     return;
   }
 
-  mensaje.textContent = "✅ Registro exitoso, bienvenido " + nombre + "!";
+  mensaje.textContent = "Registro exitoso, bienvenido " + nombre + "!";
   mensaje.style.color = "green";
 
-  // Aquí podrías simular guardar en localStorage o enviarlo a un backend
 });
