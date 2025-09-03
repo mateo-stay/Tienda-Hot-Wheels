@@ -1,132 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+/* ===== Reset & Base ===== */
 * {
-  font-family: "Segoe UI", Tahoma, sans-serif;
   margin: 0;
-  text-align: center;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  background: #f7f7f7;
+  background: #f5f5f5;
   color: #333;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+/* ===== Header ===== */
 header {
   background: linear-gradient(90deg, #ff0000, #ff0000);
   color: white;
-  padding: 1.5rem;
+  padding: 0.6rem 2rem;
   text-align: center;
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
-  margin-bottom: 0.5rem;
-  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  letter-spacing: 5px;
+  font-family: 'Bangers', cursive;
+  color: #ffffff;
+  text-shadow: 
+    2px 2px 0 #000000, 
+    4px 4px 0 #000000;  
+  transform: skew(-5deg); 
+  text-align: center; 
 }
 
 nav ul {
   list-style: none;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 
 nav ul li a {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.3s;
 }
 
 nav ul li a:hover {
-  color: black;
+  background: rgb(187, 0, 0);
 }
 
-#productos {
-  padding: 82px 20px;
+/* ===== Main ===== */
+main {
+  flex: 1;
+  padding: 20px 20px;
+  max-width: 1200px;
+  margin: auto;
   text-align: center;
 }
 
-#productos h2 {
-  margin-bottom: 25px;
-  color: #ff0000;
+main h2 {
+  margin-bottom: 5px;
+  color: #000000;
+  font-size: 2rem;
 }
 
+#p {
+    color: #000000;
+    font-size: 2 rem;
+    margin-top: 2;
+    margin-bottom: 1 rem;
+}
+
+#h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #000000; 
+    letter-spacing: 1px;
+    margin: 0.2rem 0;
+}
+
+
+/* ===== Productos ===== */
 .productos-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 40px;
+  align-items: stretch;
 }
 
 .card {
   background: white;
-  padding: 15px;
-  border-radius: 10px;
-  width: 220px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 20px;
+  border-radius: 12px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: center;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .card img {
   max-width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .precio {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  color: #000000;
+  color: #222;
   margin: 10px 0;
 }
 
 .card button {
   background: #ff0000;
   color: white;
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: bold;
+  width: 100%;
   transition: background 0.3s;
 }
 
 .card button:hover {
-  background: #d63c00;
+  background: #b80000;
 }
 
-#registro {
-  background: #fff;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-#registro h2 {
-  margin-bottom: 20px;
-  color: #ff0000;
-}
-
+/* ===== Formularios ===== */
 form {
   display: flex;
   flex-direction: column;
-  max-width: 350px;
+  max-width: 420px;
   margin: auto;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: left;
 }
 
-form input, form button {
-  margin: 8px 0;
+form h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #cc0000;
+}
+
+form label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+form input, form select, form textarea, form button {
+  margin-top: 8px;
   padding: 12px;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 1rem;
 }
@@ -137,78 +188,130 @@ form button {
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s;
+  margin-top: 20px;
 }
 
 form button:hover {
   background: #b80000;
 }
 
-#mensaje {
-  margin-top: 15px;
-  font-weight: bold;
+/* ===== Carrito ===== */
+.item-carrito {
+  background: white;
+  margin: 10px auto;
+  padding: 12px 15px;
+  border-radius: 8px;
+  max-width: 450px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
-footer {
-  text-align: center;
-  background: #222;
+.item-carrito button {
+  background: #ff0000;
+  border: none;
   color: white;
-  padding: 20px;
-  margin-top: 20px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
-  
-  nav ul {
+#totalCarrito {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #222;
+}
+
+/* ===== Admin Panel ===== */
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: #cc0000;
+  color: white;
+  padding: 25px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+.sidebar ul {
   list-style: none;
-  }
+}
 
-  nav ul li {
-  display: inline;
-  margin: 0 10px;
-  }
+.sidebar ul li {
+  margin: 15px 0;
+}
 
-  nav ul li a {
+.sidebar ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
-  }
+}
 
-  nav ul li a:hover {
-  color: black;
+.sidebar ul li a:hover {
+  color: #fdd;
+}
+
+.admin-content {
+  flex-grow: 1;
+  padding: 40px;
+  background: #f5f5f5;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  background: #222;
+  color: white;
+  padding: 12px;
+  margin-top: auto;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
   }
 
   .productos-container {
     flex-direction: row;
-    flex-wrap: wrap;
     gap: 15px;
   }
 
   .card {
     width: 45%;
   }
+
+  .admin-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
   header h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
-
-  nav ul {
-    text-align: center;
-    padding: 0;
-  }
-
-  .productos-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .card {
     width: 90%;
   }
-
-  .card button {
-    width: 100%;
+  form {
+    width: 95%;
   }
 }
