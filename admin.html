@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrador - Hot Wheels Store</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .admin-container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 220px;
+      background: #ff0000;
+      color: white;
+      padding: 20px;
+    }
+    .sidebar h2 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li {
+      margin: 10px 0;
+    }
+    .sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .sidebar ul li a:hover {
+      text-decoration: underline;
+    }
+    .admin-content {
+      flex-grow: 1;
+      padding: 30px;
+      background: #f4f4f4;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    form h3 {
+      margin-bottom: 15px;
+      color: #ff0000;
+    }
+    form label {
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+      font-weight: bold;
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      margin-top: 15px;
+      background: #ff0000;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    form button:hover {
+      background: #b80000;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Administrador</h2>
+      <ul>
+        <li><a href="index.html">Volver a la tienda</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#usuarios">Usuarios</a></li>
+      </ul>
+    </aside>
+
+    <!-- Contenido -->
+    <div class="admin-content">
+      <section id="productos">
+        <form id="formProducto">
+          <h3>Nuevo Producto</h3>
+          <label for="codigo">Código Producto:</label>
+          <input type="text" id="codigo" required minlength="3">
+
+          <label for="nombreProducto">Nombre:</label>
+          <input type="text" id="nombreProducto" required maxlength="100">
+
+          <label for="descripcion">Descripción:</label>
+          <textarea id="descripcion" maxlength="500"></textarea>
+
+          <label for="precio">Precio:</label>
+          <input type="number" id="precio" required min="0" step="0.01">
+
+          <label for="stock">Stock:</label>
+          <input type="number" id="stock" required min="0">
+
+          <label for="stockCritico">Stock Crítico:</label>
+          <input type="number" id="stockCritico" min="0">
+
+          <label for="categoria">Categoría:</label>
+          <select id="categoria" required>
+            <option value="">Seleccione...</option>
+            <option value="autos">Autos</option>
+            <option value="camionetas">Camionetas</option>
+            <option value="motos">Motos</option>
+          </select>
+
+          <label for="imagen">Imagen:</label>
+          <input type="file" id="imagen">
+
+          <button type="submit">Guardar Producto</button>
+        </form>
+      </section>
+
+      <section id="usuarios">
+        <form id="formUsuario">
+          <h3>Nuevo Usuario</h3>
+          <label for="run">RUN:</label>
+          <input type="text" id="run" required minlength="7" maxlength="9" placeholder="19011022K">
+
+          <label for="nombreU">Nombre:</label>
+          <input type="text" id="nombreU" required maxlength="50">
+
+          <label for="apellidoU">Apellidos:</label>
+          <input type="text" id="apellidoU" required maxlength="100">
+
+          <label for="correoU">Correo:</label>
+          <input type="email" id="correoU" required maxlength="100">
+
+          <label for="fechaNac">Fecha de Nacimiento:</label>
+          <input type="date" id="fechaNac">
+
+          <label for="tipoUsuario">Tipo de Usuario:</label>
+          <select id="tipoUsuario" required>
+            <option value="">Seleccione...</option>
+            <option value="admin">Administrador</option>
+            <option value="cliente">Cliente</option>
+            <option value="vendedor">Vendedor</option>
+          </select>
+
+          <label for="region">Región:</label>
+          <select id="region" required></select>
+
+          <label for="comuna">Comuna:</label>
+          <select id="comuna" required></select>
+
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" required maxlength="300">
+
+          <button type="submit">Guardar Usuario</button>
+        </form>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

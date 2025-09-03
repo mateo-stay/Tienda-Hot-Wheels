@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hot Wheels Store - Home</title>
+  <title>Login - Hot Wheels Store</title>
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/script.js" defer></script>
 </head>
@@ -25,28 +25,18 @@
   </header>
 
   <main>
-    <section id="bienvenida">
-      <h2>Bienvenido a la Tienda Oficial Hot Wheels</h2>
-      <p>Los mejores autos coleccionables al mejor precio 🚗🔥</p>
-    </section>
+    <section id="login">
+      <h2>Iniciar Sesión</h2>
+      <form id="formLogin">
+        <label for="emailLogin">Correo:</label>
+        <input type="email" id="emailLogin" required maxlength="100">
 
-    <section id="productos">
-      <h2>Modelos Destacados</h2>
-      <div class="productos-container">
-        <div class="card">
-          <img src="img/skyline.jpg" alt="Nissan Skyline R32">
-          <h3>Nissan Skyline R32</h3>
-          <p class="precio">$6.000</p>
-          <button onclick="agregarAlCarrito('Nissan Skyline R32',6000)">Añadir al carrito</button>
-        </div>
+        <label for="passwordLogin">Contraseña:</label>
+        <input type="password" id="passwordLogin" required minlength="4" maxlength="10">
 
-        <div class="card">
-          <img src="img/toyota.jpg" alt="Toyota Supra Mk4">
-          <h3>Toyota Supra Mk4</h3>
-          <p class="precio">$7.000</p>
-          <button onclick="agregarAlCarrito('Toyota Supra Mk4',7000)">Añadir al carrito</button>
-        </div>
-      </div>
+        <button type="submit">Ingresar</button>
+      </form>
+      <p id="mensajeLogin"></p>
     </section>
   </main>
 
