@@ -81,6 +81,7 @@ main h2 {
     font-size: 2 rem;
     margin-top: 2;
     margin-bottom: 1 rem;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 #h3 {
@@ -196,7 +197,7 @@ form button:hover {
 
 /* ===== Carrito ===== */
 .item-carrito {
-  background: white;
+  background: #fff;
   margin: 10px auto;
   padding: 12px 15px;
   border-radius: 8px;
@@ -205,6 +206,15 @@ form button:hover {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  color: #333;
+  transition: transform 0.2s ease;
+  gap: 20px;
+}
+
+.item-carrito:hover {
+  transform: translateY(-3px);
 }
 
 .item-carrito button {
@@ -215,14 +225,25 @@ form button:hover {
   border-radius: 5px;
   cursor: pointer;
   font-size: 0.9rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.item-carrito button:hover {
+  background-color: #ff4040;
+  transform: scale(1.1);
 }
 
 #totalCarrito {
   margin-top: 20px;
   font-weight: bold;
   font-size: 1.4rem;
-  color: #222;
+  color: #000;
+  text-align: center;
 }
+
+
+
+
 
 /* ===== Admin Panel ===== */
 .admin-container {

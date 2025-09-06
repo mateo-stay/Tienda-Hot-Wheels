@@ -360,10 +360,16 @@ function mostrarCarrito() {
   listaCarrito.innerHTML = "";
   let total = 0;
 
-  carrito.forEach((p, i) => {
-    listaCarrito.innerHTML += `<p>${p.nombre} - $${p.precio} <button onclick="eliminarDelCarrito(${i})">❌</button></p>`;
-    total += p.precio;
-  });
+carrito.forEach((p, i) => {
+  listaCarrito.innerHTML += `
+    <div class="item-carrito">
+      <span>${p.nombre} - $${p.precio}</span>
+      <button class="btn-eliminar" onclick="eliminarDelCarrito(${i})">Eliminar</button>
+    </div>
+  `;
+  total += p.precio;
+});
+
 
   totalCarrito.textContent = "Total: $" + total;
 }
