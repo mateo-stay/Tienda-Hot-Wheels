@@ -78,6 +78,33 @@
     form button:hover {
       background: #b80000;
     }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background: #ff0000;
+      color: white;
+    }
+    td button {
+      background: #b80000;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    td button:hover {
+      background: #800000;
+    }
   </style>
 </head>
 <body>
@@ -94,6 +121,7 @@
 
     <!-- Contenido -->
     <div class="admin-content">
+      <!-- Productos -->
       <section id="productos">
         <form id="formProducto">
           <h3>Nuevo Producto</h3>
@@ -128,8 +156,25 @@
 
           <button type="submit">Guardar Producto</button>
         </form>
+
+        <!-- Tabla de productos -->
+        <h3>Listado de Productos</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Categoría</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="tablaProductos"></tbody>
+        </table>
       </section>
 
+      <!-- Usuarios -->
       <section id="usuarios">
         <form id="formUsuario">
           <h3>Nuevo Usuario</h3>
@@ -167,6 +212,22 @@
 
           <button type="submit">Guardar Usuario</button>
         </form>
+
+        <!-- Tabla de usuarios -->
+        <h3>Listado de Usuarios</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>RUN</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Tipo</th>
+              <th>Región/Comuna</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="tablaUsuarios"></tbody>
+        </table>
       </section>
     </div>
   </div>
