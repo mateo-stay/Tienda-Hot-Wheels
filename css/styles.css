@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
-/* ===== Reset & Base ===== */
+
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +16,6 @@ body {
   min-height: 100vh;
 }
 
-/* ===== Header ===== */
 header {
   background: linear-gradient(90deg, #ff0000, #ff0000);
   color: white;
@@ -34,11 +33,11 @@ header h1 {
   letter-spacing: 5px;
   font-family: 'Bangers', cursive;
   color: #ffffff;
-  text-shadow: 
-    2px 2px 0 #000000, 
-    4px 4px 0 #000000;  
-  transform: skew(-5deg); 
-  text-align: center; 
+  text-shadow:
+    2px 2px 0 #000000,
+    4px 4px 0 #000000;
+  transform: skew(-5deg);
+  text-align: center;
 }
 
 nav ul {
@@ -61,7 +60,6 @@ nav ul li a:hover {
   color: rgb(255, 255, 255);
 }
 
-/* ===== Main ===== */
 main {
   flex: 1;
   padding: 20px 20px;
@@ -77,24 +75,22 @@ main h2 {
 }
 
 #p {
-    color: #000000;
-    font-size: 2 rem;
-    margin-top: 2;
-    margin-bottom: 1 rem;
-    font-family: "Segoe UI", Arial, sans-serif;
+  color: #000000;
+  font-size: 2 rem;
+  margin-top: 2;
+  margin-bottom: 1 rem;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 #h3 {
-    text-align: center;
-    font-size: 1.5rem;
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: #000000; 
-    letter-spacing: 1px;
-    margin: 0.2rem 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #000000;
+  letter-spacing: 1px;
+  margin: 0.2rem 0;
 }
 
-
-/* ===== Productos ===== */
 .productos-container {
   display: flex;
   flex-wrap: wrap;
@@ -111,14 +107,14 @@ main h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   text-align: center;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
@@ -150,7 +146,6 @@ main h2 {
   background: #b80000;
 }
 
-/* ===== Formularios ===== */
 form {
   display: flex;
   flex-direction: column;
@@ -159,7 +154,7 @@ form {
   padding: 25px;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   text-align: left;
 }
 
@@ -174,7 +169,10 @@ form label {
   margin-top: 10px;
 }
 
-form input, form select, form textarea, form button {
+form input,
+form select,
+form textarea,
+form button {
   margin-top: 8px;
   padding: 12px;
   border-radius: 6px;
@@ -195,7 +193,6 @@ form button:hover {
   background: #b80000;
 }
 
-/* ===== Carrito ===== */
 .item-carrito {
   background: #fff;
   margin: 10px auto;
@@ -205,7 +202,7 @@ form button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   font-family: "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   color: #333;
@@ -241,11 +238,6 @@ form button:hover {
   text-align: center;
 }
 
-
-
-
-
-/* ===== Admin Panel ===== */
 .admin-container {
   display: flex;
   min-height: 100vh;
@@ -256,7 +248,7 @@ form button:hover {
   background: #cc0000;
   color: white;
   padding: 25px;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar h2 {
@@ -289,7 +281,6 @@ form button:hover {
   background: #f5f5f5;
 }
 
-/* ===== Footer ===== */
 footer {
   text-align: center;
   background: #222;
@@ -298,12 +289,12 @@ footer {
   margin-top: auto;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 768px) {
   #ul {
     padding-left: 0rem;
   }
-    nav ul {
+
+  nav ul {
     text-align: center;
     list-style: none;
     display: flex;
@@ -325,7 +316,7 @@ footer {
   nav ul li a:hover {
     background: rgb(187, 0, 0);
   }
-  
+
   main h2 {
     margin-bottom: 25px;
     color: #000000;
@@ -355,29 +346,31 @@ footer {
   header h1 {
     font-size: 2.7rem;
   }
+
   .card {
     width: 45%;
   }
+
   form {
     width: 95%;
   }
 
   .card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  width: 176px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 176px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-align: center;
   }
 
   .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   }
 
   .card img {
@@ -413,7 +406,7 @@ footer {
     text-align: center;
     font-size: 1.2rem;
     font-family: "Segoe UI", Arial, sans-serif;
-    color: #000000; 
+    color: #000000;
     letter-spacing: 1px;
     margin: 0.2rem 0;
   }

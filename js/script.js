@@ -1,6 +1,3 @@
-// =======================
-// UTILIDADES GENERALES
-// =======================
 function mostrarMensaje(idElemento, mensaje, color = "red") {
   const elemento = document.getElementById(idElemento);
   if (elemento) {
@@ -19,9 +16,6 @@ function validarRUN(run) {
   return regex.test(run);
 }
 
-// =======================
-// LOCALSTORAGE HELPERS
-// =======================
 function guardarEnLS(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
@@ -29,9 +23,6 @@ function obtenerDeLS(key) {
   return JSON.parse(localStorage.getItem(key)) || [];
 }
 
-// =======================
-// REGISTRO DE USUARIO
-// =======================
 const formRegistro = document.getElementById("formRegistro");
 if (formRegistro) {
   formRegistro.addEventListener("submit", (e) => {
@@ -59,7 +50,7 @@ if (formRegistro) {
       return;
     }
 
-    usuarios.push({ nombre, email, password, tipo: "cliente" }); // tipo cliente por defecto
+    usuarios.push({ nombre, email, password, tipo: "cliente" });
     guardarEnLS("usuariosFront", usuarios);
 
     mostrarMensaje("mensaje", "Registro exitoso, bienvenido " + nombre + "!", "green");
@@ -67,9 +58,6 @@ if (formRegistro) {
   });
 }
 
-// =======================
-// LOGIN
-// =======================
 const formLogin = document.getElementById("formLogin");
 if (formLogin) {
   formLogin.addEventListener("submit", (e) => {
@@ -87,7 +75,7 @@ if (formLogin) {
     }
 
     const usuariosFront = obtenerDeLS("usuariosFront");
-    const usuariosAdmin = obtenerDeLS("usuarios"); // los creados desde admin
+    const usuariosAdmin = obtenerDeLS("usuarios");
     const todosUsuarios = [...usuariosFront, ...usuariosAdmin];
 
     const user = todosUsuarios.find(u => u.email === email && u.password === password);
@@ -107,9 +95,6 @@ if (formLogin) {
   });
 }
 
-// =======================
-// LOGOUT
-// =======================
 const btnLogout = document.getElementById("btnLogout");
 if (btnLogout) {
   btnLogout.addEventListener("click", () => {
@@ -118,9 +103,6 @@ if (btnLogout) {
   });
 }
 
-// =======================
-// CONTACTO
-// =======================
 const formContacto = document.getElementById("formContacto");
 if (formContacto) {
   formContacto.addEventListener("submit", (e) => {
@@ -147,9 +129,6 @@ if (formContacto) {
   });
 }
 
-// =======================
-// ADMIN - PRODUCTOS
-// =======================
 const formProducto = document.getElementById("formProducto");
 const tablaProductos = document.getElementById("tablaProductos");
 
@@ -165,7 +144,7 @@ function renderProductos() {
         <td>${p.precio}</td>
         <td>${p.stock}</td>
         <td>${p.categoria}</td>
-        <td><button onclick="eliminarProducto(${i})">❌</button></td>
+        <td><button onclick="eliminarProducto(${i})">Eliminar</button></td>
       </tr>
     `;
   });
@@ -208,9 +187,6 @@ function eliminarProducto(index) {
   renderProductos();
 }
 
-// =======================
-// ADMIN - USUARIOS
-// =======================
 const formUsuario = document.getElementById("formUsuario");
 const tablaUsuarios = document.getElementById("tablaUsuarios");
 
@@ -226,7 +202,7 @@ function renderUsuarios() {
         <td>${u.correo}</td>
         <td>${u.tipo}</td>
         <td>${u.region}, ${u.comuna}</td>
-        <td><button onclick="eliminarUsuario(${i})">❌</button></td>
+        <td><button onclick="eliminarUsuario(${i})">Eliminar</button></td>
       </tr>
     `;
   });
@@ -258,7 +234,7 @@ if (formUsuario) {
     }
 
     const usuarios = obtenerDeLS("usuarios");
-    usuarios.push({ run, correo, nombre, apellido, direccion, region, comuna, tipo, password: "1234" }); 
+    usuarios.push({ run, correo, nombre, apellido, direccion, region, comuna, tipo, password: "1234" });
     guardarEnLS("usuarios", usuarios);
 
     alert("Usuario registrado con éxito! Contraseña por defecto: 1234");
@@ -266,7 +242,6 @@ if (formUsuario) {
     renderUsuarios();
   });
 
-  // Regiones y comunas dinámicas
   const regiones = {
     "RM": ["Santiago", "Puente Alto", "San Bernardo"],
     "Valparaíso": ["Valparaíso", "Viña del Mar", "Quilpué"],
@@ -301,9 +276,6 @@ function eliminarUsuario(index) {
   renderUsuarios();
 }
 
-// =======================
-// CATÁLOGO DE PRODUCTOS
-// =======================
 function renderCatalogo() {
   const catalogoContainer = document.getElementById("catalogoContainer");
   if (!catalogoContainer) return;
@@ -332,9 +304,6 @@ function renderCatalogo() {
 
 renderCatalogo();
 
-// =======================
-// CARRITO DE COMPRAS
-// =======================
 function obtenerCarrito() {
   return obtenerDeLS("carrito");
 }
@@ -360,16 +329,15 @@ function mostrarCarrito() {
   listaCarrito.innerHTML = "";
   let total = 0;
 
-carrito.forEach((p, i) => {
-  listaCarrito.innerHTML += `
+  carrito.forEach((p, i) => {
+    listaCarrito.innerHTML += `
     <div class="item-carrito">
       <span>${p.nombre} - $${p.precio}</span>
       <button class="btn-eliminar" onclick="eliminarDelCarrito(${i})">Eliminar</button>
     </div>
   `;
-  total += p.precio;
-});
-
+    total += p.precio;
+  });
 
   totalCarrito.textContent = "Total: $" + total;
 }
