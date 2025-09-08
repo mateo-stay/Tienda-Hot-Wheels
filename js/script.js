@@ -304,6 +304,32 @@ function renderCatalogo() {
 
 renderCatalogo();
 
+function renderCatalogo() {
+  const catalogoContainer = document.getElementById("catalogoProductos");
+  if (!catalogoContainer) return;
+
+  const productos = obtenerDeLS("productos");
+  catalogoContainer.innerHTML = "";
+
+  if (productos.length === 0) {
+    catalogoContainer.innerHTML = "<p>No hay productos disponibles.</p>";
+    return;
+  }
+
+  productos.forEach((p) => {
+    catalogoContainer.innerHTML += `
+      <div class="card">
+        <img src="${p.imagen || "img/default.jpg"}" alt="${p.nombre}">
+        <h3>${p.nombre}</h3>
+        <p class="precio">$${p.precio}</p>
+        <p>Stock: ${p.stock}</p>
+        <p>Categoría: ${p.categoria}</p>
+        <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">Añadir al carrito</button>
+      </div>
+    `;
+  });
+}
+
 function obtenerCarrito() {
   return obtenerDeLS("carrito");
 }
