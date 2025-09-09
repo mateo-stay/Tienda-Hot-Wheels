@@ -74,17 +74,19 @@ if (formLogin) {
       return;
     }
 
-    const usuariosFront = obtenerDeLS("usuariosFront");
-    const usuariosAdmin = obtenerDeLS("usuarios");
+    const usuariosFront = obtenerDeLS("usuariosFront"); 
+    const usuariosAdmin = obtenerDeLS("usuarios"); 
     const todosUsuarios = [...usuariosFront, ...usuariosAdmin];
 
-    const user = todosUsuarios.find(u => u.email === email && u.password === password);
+    const user = todosUsuarios.find(
+      u => ((u.email && u.email === email) || (u.correo && u.correo === email)) && u.password === password
+    );
 
     if (user) {
       mostrarMensaje("mensajeLogin", "Inicio de sesión exitoso, bienvenido " + user.nombre + "!", "green");
       localStorage.setItem("usuarioActivo", JSON.stringify(user));
 
-      if (user.tipo === "admin") {
+      if (user.tipo && user.tipo.toLowerCase() === "admin") {
         window.location.href = "admin.html";
       } else {
         window.location.href = "index.html";
@@ -155,21 +157,20 @@ if (formProducto) {
     e.preventDefault();
     const codigo = document.getElementById("codigo").value.trim();
     const nombre = document.getElementById("nombreProducto").value.trim();
+    const descripcion = document.getElementById("descripcion").value.trim();
     const precio = parseFloat(document.getElementById("precio").value);
     const stock = parseInt(document.getElementById("stock").value);
+    const stockCritico = parseInt(document.getElementById("stockCritico").value);
     const categoria = document.getElementById("categoria").value;
+    const imagen = document.getElementById("imagen").value.trim();
 
     if (codigo.length < 3 || nombre === "" || isNaN(precio) || isNaN(stock) || categoria === "") {
       alert("Revisa los campos obligatorios.");
       return;
     }
-    if (precio < 0 || stock < 0) {
-      alert("Precio y stock no pueden ser negativos.");
-      return;
-    }
 
     const productos = obtenerDeLS("productos");
-    productos.push({ codigo, nombre, precio, stock, categoria });
+    productos.push({ codigo, nombre, descripcion, precio, stock, stockCritico, categoria, imagen });
     guardarEnLS("productos", productos);
 
     alert("Producto guardado con éxito!");
@@ -228,24 +229,18 @@ if (formUsuario) {
       alert("Correo inválido.");
       return;
     }
-    if (!nombre || !apellido || !direccion || !region || !comuna || !tipo) {
-      alert("Completa todos los campos obligatorios.");
-      return;
-    }
 
     const usuarios = obtenerDeLS("usuarios");
-    usuarios.push({ run, correo, nombre, apellido, direccion, region, comuna, tipo, password: "1234" });
+    usuarios.push({ run, correo, nombre, apellido, direccion, region, comuna, tipo, password: "admin1234" });
     guardarEnLS("usuarios", usuarios);
 
-    alert("Usuario registrado con éxito! Contraseña por defecto: 1234");
+    alert("Usuario registrado con éxito! Contraseña por defecto: admin1234");
     formUsuario.reset();
     renderUsuarios();
   });
 
   const regiones = {
-    "RM": ["Santiago", "Puente Alto", "San Bernardo"],
-    "Valparaíso": ["Valparaíso", "Viña del Mar", "Quilpué"],
-    "Biobío": ["Concepción", "Talcahuano", "Los Ángeles"]
+    "Región Metropolitana": ["Santiago", "Puente Alto", "San Bernardo"]
   };
 
   const regionSelect = document.getElementById("region");
@@ -277,34 +272,6 @@ function eliminarUsuario(index) {
 }
 
 function renderCatalogo() {
-  const catalogoContainer = document.getElementById("catalogoContainer");
-  if (!catalogoContainer) return;
-
-  const productos = obtenerDeLS("productos");
-  catalogoContainer.innerHTML = "";
-
-  if (productos.length === 0) {
-    catalogoContainer.innerHTML = "<p>No hay productos disponibles.</p>";
-    return;
-  }
-
-  productos.forEach((p, i) => {
-    catalogoContainer.innerHTML += `
-      <div class="card">
-        <h3>${p.nombre}</h3>
-        <p>Código: ${p.codigo}</p>
-        <p>Precio: $${p.precio}</p>
-        <p>Stock: ${p.stock}</p>
-        <p>Categoría: ${p.categoria}</p>
-        <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">Añadir al carrito</button>
-      </div>
-    `;
-  });
-}
-
-renderCatalogo();
-
-function renderCatalogo() {
   const catalogoContainer = document.getElementById("catalogoProductos");
   if (!catalogoContainer) return;
 
@@ -329,15 +296,14 @@ function renderCatalogo() {
     `;
   });
 }
+renderCatalogo();
 
 function obtenerCarrito() {
   return obtenerDeLS("carrito");
 }
-
 function guardarCarrito(carrito) {
   guardarEnLS("carrito", carrito);
 }
-
 function agregarAlCarrito(nombre, precio) {
   const carrito = obtenerCarrito();
   carrito.push({ nombre, precio });
@@ -345,7 +311,6 @@ function agregarAlCarrito(nombre, precio) {
   alert(nombre + " agregado al carrito!");
   mostrarCarrito();
 }
-
 function mostrarCarrito() {
   const listaCarrito = document.getElementById("listaCarrito");
   const totalCarrito = document.getElementById("totalCarrito");
@@ -367,14 +332,12 @@ function mostrarCarrito() {
 
   totalCarrito.textContent = "Total: $" + total;
 }
-
 function eliminarDelCarrito(index) {
   const carrito = obtenerCarrito();
   carrito.splice(index, 1);
   guardarCarrito(carrito);
   mostrarCarrito();
 }
-
 if (document.getElementById("listaCarrito")) {
   mostrarCarrito();
 }
