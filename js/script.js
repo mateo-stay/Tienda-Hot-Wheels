@@ -155,6 +155,7 @@ function renderProductos() {
 if (formProducto) {
   formProducto.addEventListener("submit", (e) => {
     e.preventDefault();
+    
     const codigo = document.getElementById("codigo").value.trim();
     const nombre = document.getElementById("nombreProducto").value.trim();
     const descripcion = document.getElementById("descripcion").value.trim();
@@ -162,20 +163,44 @@ if (formProducto) {
     const stock = parseInt(document.getElementById("stock").value);
     const stockCritico = parseInt(document.getElementById("stockCritico").value);
     const categoria = document.getElementById("categoria").value;
-    const imagen = document.getElementById("imagen").value.trim();
+    const archivoImagen = document.getElementById("imagen").files[0]; // <-- archivo real
 
-    if (codigo.length < 3 || nombre === "" || isNaN(precio) || isNaN(stock) || categoria === "") {
+    if (
+      codigo.length < 3 ||
+      nombre === "" ||
+      isNaN(precio) ||
+      isNaN(stock) ||
+      categoria === "" ||
+      !archivoImagen
+    ) {
       alert("Revisa los campos obligatorios.");
       return;
     }
 
-    const productos = obtenerDeLS("productos");
-    productos.push({ codigo, nombre, descripcion, precio, stock, stockCritico, categoria, imagen });
-    guardarEnLS("productos", productos);
+    // Usamos FileReader para convertir la imagen a Base64 y guardarla
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      const imagenBase64 = event.target.result;
 
-    alert("Producto guardado con éxito!");
-    formProducto.reset();
-    renderProductos();
+      const productos = obtenerDeLS("productos");
+      productos.push({ 
+        codigo, 
+        nombre, 
+        descripcion, 
+        precio, 
+        stock, 
+        stockCritico, 
+        categoria, 
+        imagen: imagenBase64 // <-- guardamos base64
+      });
+      guardarEnLS("productos", productos);
+
+      alert("Producto guardado con éxito!");
+      formProducto.reset();
+      renderProductos();
+    };
+
+    reader.readAsDataURL(archivoImagen); // <-- convierte a Base64
   });
 
   renderProductos();
@@ -278,7 +303,7 @@ function renderCatalogo() {
   const productos = obtenerDeLS("productos");
   catalogoContainer.innerHTML = "";
 
-  if (productos.length === 0) {
+  if (!productos || productos.length === 0) {
     catalogoContainer.innerHTML = "<p>No hay productos disponibles.</p>";
     return;
   }
@@ -286,16 +311,17 @@ function renderCatalogo() {
   productos.forEach((p) => {
     catalogoContainer.innerHTML += `
       <div class="card">
-        <img src="${p.imagen || "img/default.jpg"}" alt="${p.nombre}">
+        <img src="${p.imagen && p.imagen.trim() !== "" ? p.imagen : "img/default.jpg"}" alt="${p.nombre}" class="producto-img">
         <h3>${p.nombre}</h3>
         <p class="precio">$${p.precio}</p>
-        <p>Stock: ${p.stock}</p>
-        <p>Categoría: ${p.categoria}</p>
+        <p><strong>Stock:</strong> ${p.stock}</p>
+        <p><strong>Categoría:</strong> ${p.categoria}</p>
         <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">Añadir al carrito</button>
       </div>
     `;
   });
 }
+
 renderCatalogo();
 
 function obtenerCarrito() {
