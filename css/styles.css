@@ -631,3 +631,18 @@ td button:hover {
   color: #444;
   line-height: 1.4;
 }
+.btn-comprar {
+  background: #ff0000;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 17px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-comprar:hover {
+  background: #cc0000; 
+  transform: scale(1.05); 
+}

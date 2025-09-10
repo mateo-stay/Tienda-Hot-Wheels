@@ -347,15 +347,31 @@ function mostrarCarrito() {
 
   carrito.forEach((p, i) => {
     listaCarrito.innerHTML += `
-    <div class="item-carrito">
-      <span>${p.nombre} - $${p.precio}</span>
-      <button class="btn-eliminar" onclick="eliminarDelCarrito(${i})">Eliminar</button>
-    </div>
-  `;
+      <div class="item-carrito">
+        <span>${p.nombre} - $${p.precio}</span>
+        <button class="btn-eliminar" onclick="eliminarDelCarrito(${i})">Eliminar</button>
+      </div>
+    `;
     total += p.precio;
   });
 
-  totalCarrito.textContent = "Total: $" + total;
+  totalCarrito.innerHTML = `
+    <p id="p">Total: $${total}</p>
+    <button class="btn-comprar" onclick="comprar()">Comprar</button>
+  `;
+}
+
+function comprar() {
+  const carrito = obtenerCarrito();
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío");
+    return;
+  }
+
+  alert("¡Gracias por tu compra!");
+  localStorage.removeItem("carrito"); 
+  mostrarCarrito(); 
+
 }
 function eliminarDelCarrito(index) {
   const carrito = obtenerCarrito();
