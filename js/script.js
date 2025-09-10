@@ -163,7 +163,7 @@ if (formProducto) {
     const stock = parseInt(document.getElementById("stock").value);
     const stockCritico = parseInt(document.getElementById("stockCritico").value);
     const categoria = document.getElementById("categoria").value;
-    const archivoImagen = document.getElementById("imagen").files[0]; // <-- archivo real
+    const archivoImagen = document.getElementById("imagen").files[0];
 
     if (
       codigo.length < 3 ||
@@ -177,7 +177,6 @@ if (formProducto) {
       return;
     }
 
-    // Usamos FileReader para convertir la imagen a Base64 y guardarla
     const reader = new FileReader();
     reader.onload = function (event) {
       const imagenBase64 = event.target.result;
@@ -191,7 +190,7 @@ if (formProducto) {
         stock, 
         stockCritico, 
         categoria, 
-        imagen: imagenBase64 // <-- guardamos base64
+        imagen: imagenBase64 
       });
       guardarEnLS("productos", productos);
 
@@ -200,7 +199,7 @@ if (formProducto) {
       renderProductos();
     };
 
-    reader.readAsDataURL(archivoImagen); // <-- convierte a Base64
+    reader.readAsDataURL(archivoImagen);
   });
 
   renderProductos();
@@ -312,10 +311,10 @@ function renderCatalogo() {
     catalogoContainer.innerHTML += `
       <div class="card">
         <img src="${p.imagen && p.imagen.trim() !== "" ? p.imagen : "img/default.jpg"}" alt="${p.nombre}" class="producto-img">
-        <h3>${p.nombre}</h3>
+        <h3 id="h3_pro">${p.nombre}</h3>
         <p class="precio">$${p.precio}</p>
-        <p><strong>Stock:</strong> ${p.stock}</p>
-        <p><strong>Categoría:</strong> ${p.categoria}</p>
+        <p id="p_stock"><strong>Stock:</strong> ${p.stock}</p>
+        <p id="p_categoria" ><strong>Categoría:</strong> ${p.categoria}</p>
         <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">Añadir al carrito</button>
       </div>
     `;
