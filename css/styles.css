@@ -541,7 +541,7 @@ form button {
   padding: 6px 10px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 17px;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
